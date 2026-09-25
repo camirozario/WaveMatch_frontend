@@ -45,7 +45,7 @@ async function loadDashboard() { // await precisa estar dentro de uma função a
 }
 
     const data = await response.json();
-    
+
     recommendationsLoading.style.display = "none";
     
     Object.entries(data).forEach(function([beachName, beachData]) {
@@ -70,7 +70,6 @@ async function loadDashboard() { // await precisa estar dentro de uma função a
 }
 
 loadDashboard();
-
 
 
 async function loadDashboardInfo() {
