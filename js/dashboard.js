@@ -1,6 +1,25 @@
 const token = localStorage.getItem("access_token");
 const recommendations = document.getElementById("recommendations");
 
+let isRedirectingToLogin = false;
+
+function handleUnauthorized(response) {
+
+    if (response.status === 401 && !isRedirectingToLogin) {
+
+        isRedirectingToLogin = true;
+
+        localStorage.removeItem("access_token");
+
+        alert("Sua sessão expirou. Faça login novamente para continuar.");
+
+        window.location.href = "./index.html";
+
+        return true;
+    }
+
+    return response.status === 401;
+}
 
 
 console.log("dashboard.js carregou!"); 
@@ -19,12 +38,9 @@ async function loadDashboard() { // await precisa estar dentro de uma função a
         }
     );
 
-    if (response.status === 401) {
-        localStorage.removeItem("access_token");
-        alert("Sua sessão expirou. Faça login novamente para continuar.");
-        window.location.href = "./index.html";
-        return;
-    }
+   if (handleUnauthorized(response)) {
+    return;
+}
 
     const data = await response.json();
     
@@ -67,14 +83,9 @@ async function loadDashboardInfo() {
         
     );
 
-
-    if (response.status === 401) {
-        localStorage.removeItem("access_token");
-        alert("Sua sessão expirou. Faça login novamente para continuar.");
-        window.location.href = "./index.html";
-        return;
+    if (handleUnauthorized(response)) {
+    return;
     }
-
 
     const data = await response.json();
 

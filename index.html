@@ -3,41 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f1e5">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Login</title>
+    <title>WaveMatch | Login</title>
 </head>
 <body>
 
-    <h1>Login</h1>
+<div class="auth">
 
-    <form id="login-form">
-        <label for="login-email-input">E-mail:</label>
-        <input
-            id="login-email-input"
-            name="email"
-            type="email"
-            placeholder="email@email.com"
-            required
-        ><br/>
+    <aside class="auth-brand">
+        <img class="brand-lockup" src="./assets/img/wavematch-lockup-cream.png" alt="WaveMatch">
+        <img class="brand-mark-bg" src="./assets/img/wavematch-mark-cream.png" alt="">
+        <span class="sticker" aria-hidden="true"><b>surf</b>+ clima</span>
 
-        <label for="login-password-input">Senha:</label>
-        <input
-            id="login-password-input"
-            name="password"
-            type="password"
-            placeholder="Sua senha"
-            required
-        ><br/>
+        <div>
+            <h2>A onda certa, no <span>momento</span> certo.</h2>
+            <p>Previsão do tempo e condições do mar combinadas com o seu nível de surf.</p>
+        </div>
 
-        <button type="submit">Login</button>
-    </form><br/>
+        <div class="ribbon" aria-hidden="true">
+            <span>Previsão</span><span>Praias</span><span>Match</span>
+        </div>
+    </aside>
 
+    <main class="auth-main">
+        <div class="card auth-card">
 
-    Ainda não tem cadastro?<br>
-    <a href="./register.html">Cadastre-se aqui!</a>
+            <span class="eyebrow">Bem-vindo de volta</span>
+            <h1>Login</h1>
+            <p class="auth-lead">Entre para ver as melhores ondas de hoje.</p>
+
+            <form id="login-form">
+                <div class="field">
+                    <label for="login-email-input">E-mail:</label>
+                    <input
+                        id="login-email-input"
+                        name="email"
+                        type="email"
+                        placeholder="email@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="login-password-input">Senha:</label>
+                    <input
+                        id="login-password-input"
+                        name="password"
+                        type="password"
+                        placeholder="Sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button class="btn primary block" type="submit">Login</button>
+            </form>
+
+            <p class="auth-switch">
+                Ainda não tem cadastro?
+                <a href="./register.html">Cadastre-se aqui!</a>
+            </p>
+
+        </div>
+    </main>
+
+</div>
 
     <script src="./js/login.js"></script>
 
 </body>
 </html>
-

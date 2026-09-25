@@ -4,56 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f1e5">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>WaveMatch | Meu Perfil</title>
 </head>
 
 <body>
 
-    <h1>Meu perfil</h1>
+<header class="app-header">
+    <a class="brand" href="./dashboard.html">
+        <img class="brand-lockup" src="./assets/img/wavematch-lockup.png" alt="WaveMatch">
+    </a>
+    <nav class="app-nav" aria-label="Principal">
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./profile.html" aria-current="page">Meu perfil</a>
+    </nav>
+</header>
 
-    <form id="profile-form">
+<main class="page">
 
-        <h2 id="profile-name"></h2>
+    <div class="page-heading">
+        <span class="eyebrow">Conta</span>
+        <h1>Meu perfil</h1>
+    </div>
 
-        <p id="profile-email"></p>
+    <form id="profile-form" class="card profile-card">
 
-        <p id="profile-dob"></p>
-      
+        <div class="profile-identity">
+            <span class="profile-avatar" aria-hidden="true">
+                <img src="./assets/img/wavematch-mark.png" alt="">
+            </span>
+            <div>
+                <h2 id="profile-name"></h2>
+                <p id="profile-email"></p>
+                <p id="profile-dob"></p>
+            </div>
+        </div>
 
-        <label for="profile-surf-level">Nível de Surf:</label>
-        <select id="profile-surf-level">
-            <option value="iniciante">Iniciante</option>
-            <option value="intermediario">Intermediário</option>
-            <option value="avancado">Avançado</option>
-        </select>
-        <br>
+        <span class="eyebrow form-section-title">Preferências de surf</span>
 
-        <label for="profile-min-wave">Altura mínima de onda (m):</label>
-        <input
-            id="profile-min-wave"
-            type="number"
-            step="0.1"
-            min="0"
-        >
-        <br>
+        <div class="field">
+            <label for="profile-surf-level">Nível de Surf:</label>
+            <select id="profile-surf-level">
+                <option value="iniciante">Iniciante</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="avancado">Avançado</option>
+            </select>
+        </div>
 
-        <label for="profile-max-wave">Altura máxima de onda (m):</label>
-        <input
-            id="profile-max-wave"
-            type="number"
-            step="0.1"
-            min="0"
-        >
-        <br>
+        <div class="field-grid">
+            <div class="field">
+                <label for="profile-min-wave">Altura mínima de onda (m):</label>
+                <input
+                    id="profile-min-wave"
+                    type="number"
+                    step="0.1"
+                    min="0"
+                >
+            </div>
 
-        <button type="submit">Salvar alterações</button>
+            <div class="field">
+                <label for="profile-max-wave">Altura máxima de onda (m):</label>
+                <input
+                    id="profile-max-wave"
+                    type="number"
+                    step="0.1"
+                    min="0"
+                >
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn primary" type="submit">Salvar alterações</button>
+        </div>
 
     </form>
 
-    <button id="delete-account-button" type="button">
-        Excluir minha conta
-    </button>
+    <section class="danger-zone">
+        <div>
+            <h2>Excluir conta</h2>
+            <p>Essa ação remove seu perfil e suas preferências.</p>
+        </div>
+        <button id="delete-account-button" class="btn danger" type="button">
+            Excluir minha conta
+        </button>
+    </section>
+
+</main>
 
     <script src="./js/profile.js"></script>
 

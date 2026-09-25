@@ -4,95 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f1e5">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>WaveMatch | Cadastro</title>
 </head>
 
 <body>
 
-    <h1>Crie sua conta</h1>
+<div class="auth">
 
-<form id="register-form">
+    <aside class="auth-brand">
+        <img class="brand-lockup" src="./assets/img/wavematch-lockup-cream.png" alt="WaveMatch">
+        <img class="brand-mark-bg" src="./assets/img/wavematch-mark-cream.png" alt="">
+        <span class="sticker" aria-hidden="true"><b>novo</b>perfil</span>
 
-    <label for="register-name">Nome:</label>
-    <input 
-        id="register-name" 
-        name="name"
-        type="text" 
-        required
-    >
-    <br>
+        <div>
+            <h2>Seu nível, suas ondas, seu <span>match</span>.</h2>
+            <p>Conte como você surfa e o WaveMatch recomenda as praias e horários ideais para você.</p>
+        </div>
 
-    <label for="register-dob">Data de nascimento:</label>
-    <input 
-        id="register-dob" 
-        name="date_of_birth"
-        type="date" 
-        required
-    >
-    <br>
+        <div class="ribbon" aria-hidden="true">
+            <span>Previsão</span><span>Praias</span><span>Match</span>
+        </div>
+    </aside>
 
-    <label for="register-email">E-mail:</label>
-    <input 
-        id="register-email" 
-        name="email"
-        type="email" 
-        required
-    >
-    <br>
+    <main class="auth-main">
+        <div class="card auth-card">
 
-    <label for="register-password">Senha:</label>
-    <input 
-        id="register-password" 
-        name="password"
-        type="password" 
-        required
-    >
-    <br>
+            <span class="eyebrow">Cadastro</span>
+            <h1>Crie sua conta</h1>
+            <p class="auth-lead">Leva menos de um minuto.</p>
 
-    <label for="register-surf-level">Nível de Surf:</label>
-    <select 
-        id="register-surf-level" 
-        name="surf_level"
-        required
-    >
-        <option value="">Selecione seu nível</option>
-        <option value="iniciante">Iniciante</option>
-        <option value="intermediario">Intermediário</option>
-        <option value="avancado">Avançado</option>
-    </select>
-    <br>
+            <form id="register-form">
 
-    <label for="register-min-wave">Altura mínima de onda (m):</label>
-    <input 
-        id="register-min-wave" 
-        name="min_wave_height"
-        type="number"
-        step="0.1"
-        min="0"
-        placeholder="Opcional"
-    >
-    <br>
+                <div class="field">
+                    <label for="register-name">Nome:</label>
+                    <input
+                        id="register-name"
+                        name="name"
+                        type="text"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
 
-    <label for="register-max-wave">Altura máxima de onda (m):</label>
-    <input 
-        id="register-max-wave" 
-        name="max_wave_height"
-        type="number"
-        step="0.1"
-        min="0"
-        placeholder="Opcional"
-    >
-    <br>
+                <div class="field">
+                    <label for="register-dob">Data de nascimento:</label>
+                    <input
+                        id="register-dob"
+                        name="date_of_birth"
+                        type="date"
+                        required
+                    >
+                </div>
 
-    <button type="submit">Criar conta</button>
+                <div class="field">
+                    <label for="register-email">E-mail:</label>
+                    <input
+                        id="register-email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
 
-</form>
+                <div class="field">
+                    <label for="register-password">Senha:</label>
+                    <input
+                        id="register-password"
+                        name="password"
+                        type="password"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
 
-    <p>
-        Já tem uma conta?
-        <a href="./index.html">Faça login</a>
-    </p>
+                <div class="field">
+                    <label for="register-surf-level">Nível de Surf:</label>
+                    <select
+                        id="register-surf-level"
+                        name="surf_level"
+                        required
+                    >
+                        <option value="">Selecione seu nível</option>
+                        <option value="iniciante">Iniciante</option>
+                        <option value="intermediario">Intermediário</option>
+                        <option value="avancado">Avançado</option>
+                    </select>
+                </div>
+
+                <div class="field-grid">
+                    <div class="field">
+                        <label for="register-min-wave">Altura mínima de onda (m):</label>
+                        <input
+                            id="register-min-wave"
+                            name="min_wave_height"
+                            type="number"
+                            step="0.1"
+                            min="0"
+                            placeholder="Opcional"
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="register-max-wave">Altura máxima de onda (m):</label>
+                        <input
+                            id="register-max-wave"
+                            name="max_wave_height"
+                            type="number"
+                            step="0.1"
+                            min="0"
+                            placeholder="Opcional"
+                        >
+                    </div>
+                </div>
+
+                <button class="btn primary block" type="submit">Criar conta</button>
+
+            </form>
+
+            <p class="auth-switch">
+                Já tem uma conta?
+                <a href="./index.html">Faça login</a>
+            </p>
+
+        </div>
+    </main>
+
+</div>
 
     <script src="./js/register.js"></script>
 

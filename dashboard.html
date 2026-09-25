@@ -1,24 +1,51 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6f1e5">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./css/tokens.css">
     <link rel="stylesheet" href="./css/style.css">
+    <title>WaveMatch | Dashboard</title>
 </head>
 
 <body>
-<h1 id="welcome-message"></h1>
 
-<div id="weather-info">
-    <p id="weather-condition"></p>
-    <p id="temperature"></p>
-    <p id="weather-message"></p>
-</div>
+<header class="app-header">
+    <a class="brand" href="./dashboard.html">
+        <img class="brand-lockup" src="./assets/img/wavematch-lockup.png" alt="WaveMatch">
+    </a>
+    <nav class="app-nav" aria-label="Principal">
+        <a href="./dashboard.html" aria-current="page">Dashboard</a>
+        <a href="./profile.html">Meu perfil</a>
+    </nav>
+</header>
 
-<h2>Suas melhores opções</h2>
+<main class="page">
 
-<div id="recommendations"></div>
+    <div class="page-heading">
+        <span class="eyebrow">Dashboard</span>
+        <h1 id="welcome-message"></h1>
+    </div>
+
+    <div id="weather-info" class="weather-card">
+        <p id="weather-condition"></p>
+        <p id="temperature"></p>
+        <p id="weather-message"></p>
+    </div>
+
+    <div class="section-heading">
+        <span class="eyebrow">Recomendações de hoje</span>
+        <h2>Suas melhores opções</h2>
+    </div>
+
+    <div id="recommendations"></div>
+
+</main>
 
 <script src="./js/dashboard.js"></script>
 
 </body>
+</html>

@@ -1,0 +1,12 @@
+:root {
+  --color-paper:#f6f1e5; --color-surface:#fffcf5; --color-ink:#263c43; --color-muted:#586667; --color-line:#b9beb2;
+  --color-blue:#245974; --color-orange:#ef683b; --color-green:#386550; --color-lavender:#b8a6dd; --color-yellow:#efb841;
+  --color-action:var(--color-blue); --color-danger:#a32f32; --color-success:#286044; --color-warning:#825411; --color-info:#245974;
+  --color-success-bg:#e0eddc; --color-danger-bg:#fbe4df; --color-warning-bg:#fff0c5; --color-info-bg:#e1edf1;
+  --font-display:'Bricolage Grotesque',Georgia,serif; --font-body:'DM Sans',Arial,sans-serif; --font-code:Consolas,'Courier New',monospace;
+  --text-display:clamp(2.4rem,4vw,3.8rem); --text-title:1.65rem; --text-body:1rem; --text-label:.875rem; --text-caption:.8125rem;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px; --space-16:64px;
+  --radius-sm:6px; --radius-md:12px; --radius-lg:20px; --radius-pill:999px;
+  --border:1.5px solid var(--color-ink); --shadow-sm:2px 2px 0 var(--color-ink); --shadow-md:4px 4px 0 var(--color-ink); --shadow-lg:7px 7px 0 var(--color-ink);
+  --focus:0 0 0 3px var(--color-surface),0 0 0 5px var(--color-blue); --duration:160ms;
+}
