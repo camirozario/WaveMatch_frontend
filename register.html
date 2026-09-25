@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>WaveMatch | Cadastro</title>
+</head>
+
+<body>
+
+    <h1>Crie sua conta</h1>
+
+<form id="register-form">
+
+    <label for="register-name">Nome:</label>
+    <input 
+        id="register-name" 
+        name="name"
+        type="text" 
+        required
+    >
+    <br>
+
+    <label for="register-dob">Data de nascimento:</label>
+    <input 
+        id="register-dob" 
+        name="date_of_birth"
+        type="date" 
+        required
+    >
+    <br>
+
+    <label for="register-email">E-mail:</label>
+    <input 
+        id="register-email" 
+        name="email"
+        type="email" 
+        required
+    >
+    <br>
+
+    <label for="register-password">Senha:</label>
+    <input 
+        id="register-password" 
+        name="password"
+        type="password" 
+        required
+    >
+    <br>
+
+    <label for="register-surf-level">Nível de Surf:</label>
+    <select 
+        id="register-surf-level" 
+        name="surf_level"
+        required
+    >
+        <option value="">Selecione seu nível</option>
+        <option value="iniciante">Iniciante</option>
+        <option value="intermediario">Intermediário</option>
+        <option value="avancado">Avançado</option>
+    </select>
+    <br>
+
+    <label for="register-min-wave">Altura mínima de onda (m):</label>
+    <input 
+        id="register-min-wave" 
+        name="min_wave_height"
+        type="number"
+        step="0.1"
+        min="0"
+        placeholder="Opcional"
+    >
+    <br>
+
+    <label for="register-max-wave">Altura máxima de onda (m):</label>
+    <input 
+        id="register-max-wave" 
+        name="max_wave_height"
+        type="number"
+        step="0.1"
+        min="0"
+        placeholder="Opcional"
+    >
+    <br>
+
+    <button type="submit">Criar conta</button>
+
+</form>
+
+    <p>
+        Já tem uma conta?
+        <a href="./index.html">Faça login</a>
+    </p>
+
+    <script src="./js/register.js"></script>
+
+</body>
+</html>
