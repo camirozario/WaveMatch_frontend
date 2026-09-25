@@ -1,5 +1,7 @@
 const token = localStorage.getItem("access_token");
 const recommendations = document.getElementById("recommendations");
+const recommendationsLoading = document.getElementById("recommendations-loading");
+
 
 let isRedirectingToLogin = false;
 
@@ -43,6 +45,8 @@ async function loadDashboard() { // await precisa estar dentro de uma função a
 }
 
     const data = await response.json();
+    
+    recommendationsLoading.style.display = "none";
     
     Object.entries(data).forEach(function([beachName, beachData]) {
 

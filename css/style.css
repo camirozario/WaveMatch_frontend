@@ -336,6 +336,32 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
 /* Os itens de #recommendations são criados pelo dashboard.js como uma
    sequência plana de <h2> (praia) e <p> (período). O CSS agrupa cada praia
    visualmente como um cartão, sem alterar o script. */
+#recommendations-loading {
+    height: 180px;
+    border: 1px dashed var(--color-line);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-paper);
+    border-top-color: var(--color-orange);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 #recommendations > h2,
 #recommendations > p {
   margin: 0;

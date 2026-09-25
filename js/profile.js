@@ -1,5 +1,6 @@
 const token = localStorage.getItem("access_token");
 const profileForm = document.getElementById("profile-form");
+const deleteAccountButton = document.getElementById("delete-account-button");
 
 async function loadProfile() {
 
@@ -58,5 +59,36 @@ profileForm.addEventListener("submit", async function(event) {
     } else {
         alert(data.message);
     }
+
+});
+
+deleteAccountButton.addEventListener("click", async function() {
+    const confirmDelete = confirm(
+        "Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita."
+    );
+
+    if (!confirmDelete) { // if not -> 
+        return; // acabou a execução dessa função, não execute o que estiver abaixo.
+    }
+        const response = await fetch(
+        "http://127.0.0.1:5000/profile",
+            {
+                method:"DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                 },
+            }
+        );
+
+        const data = await response.json();
+
+        if (response.ok){
+            alert(data.message);
+            localStorage.removeItem("access_token");
+            window.location.href="./index.html"
+        }
+        else{
+            alert(data.message)
+        }
 
 });
