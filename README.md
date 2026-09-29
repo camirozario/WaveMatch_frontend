@@ -1,159 +1,149 @@
 
-# 🌊 WaveMatch — Backend
+# 🌊 WaveMatch — Frontend
 
 O **WaveMatch** é uma aplicação web desenvolvida para ajudar surfistas a encontrar condições de surf compatíveis com seu nível de experiência e suas preferências pessoais.
 
-Este repositório contém o **backend da aplicação**, desenvolvido em Python com Flask.
+Este repositório contém o **frontend da aplicação**, responsável pela interface visual e pela comunicação com a API REST do WaveMatch.
 
 ## 🛠️ Tecnologias utilizadas
 
-- **Python:** linguagem de programação.
-- **Flask:** framework utilizado no desenvolvimento da API REST.
-- **Flask-SQLAlchemy:** integração com o banco de dados.
-- **PostgreSQL:** armazenamento e persistência dos dados.
-- **Flask-JWT-Extended:** autenticação utilizando tokens JWT.
-- **Flasgger (Swagger):** documentação interativa da API.
-- **Open-Meteo API:** obtenção de dados meteorológicos e marítimos.
+- **HTML5:** estrutura das páginas.
+- **CSS3:** estilização e identidade visual.
+- **JavaScript:** interatividade e comunicação com a API.
+- **Fetch API:** realização de requisições HTTP.
 - **Docker:** conteinerização da aplicação.
+- **Nginx:** servidor web utilizado para disponibilizar o frontend.
 
 ## ✨ Funcionalidades
 
-- Cadastro e autenticação de usuários.
-- Autenticação utilizando JWT.
-- Consulta, atualização e exclusão de usuários.
-- Armazenamento do nível de surf e das preferências de altura das ondas.
-- Consulta de condições meteorológicas e marítimas por meio de APIs externas.
-- Geração de recomendações com base nas preferências dos usuários.
-- Documentação interativa dos endpoints utilizando Swagger.
+A interface do WaveMatch permite:
+
+- Cadastrar novos usuários.
+- Realizar login.
+- Informar o nível de experiência no surf.
+- Definir preferências de altura mínima e máxima das ondas.
+- Consultar recomendações personalizadas.
+- Visualizar informações retornadas pelo backend.
+
+As informações são processadas pelo backend, que consulta os dados externos e gera as recomendações.
 
 ## 🏗️ Arquitetura
 
 O WaveMatch utiliza uma arquitetura cliente-servidor, com frontend e backend organizados em repositórios independentes.
 
-O backend é responsável por:
+O frontend é responsável por:
 
-1. Receber e processar as requisições HTTP do frontend.
-2. Gerenciar o cadastro e a autenticação dos usuários.
-3. Armazenar e consultar informações no PostgreSQL.
-4. Consumir dados externos da API Open-Meteo.
-5. Processar as condições de surf e gerar recomendações personalizadas.
-6. Retornar os resultados ao frontend por meio de uma API REST.
+1. Apresentar a interface da aplicação.
+2. Receber os dados inseridos pelos usuários.
+3. Enviar requisições HTTP para o backend.
+4. Gerenciar a interação do usuário com a aplicação.
+5. Exibir as informações e recomendações retornadas pela API.
 
-### Componentes principais
+O diagrama abaixo apresenta a arquitetura do WaveMatch
+e a comunicação entre seus componentes.
+
+![Arquitetura do WaveMatch](arquitetura-wavematch.png)
+
+### Comunicação entre os componentes
 
 | Componente | Responsabilidade |
 |---|---|
 | Frontend | Interface e interação com o usuário |
 | Backend Flask | API REST e regras de negócio |
 | PostgreSQL | Persistência dos dados |
-| Open-Meteo | Fornecimento de dados meteorológicos e marítimos |
+| Open-Meteo | Dados meteorológicos e marítimos |
 
-## 📡 Principais endpoints
+O frontend não acessa diretamente o PostgreSQL nem a API externa. Essas operações são realizadas pelo backend.
+
+## 🔗 Integração com a API
+
+O frontend utiliza JavaScript e a Fetch API para realizar requisições HTTP ao backend.
+
+Entre as operações disponibilizadas pela API estão:
 
 | Método | Endpoint | Descrição |
 |---|---|---|
-| POST | `/register` | Cadastrar um usuário |
-| POST | `/login` | Autenticar um usuário |
-| GET | `/users/<int:user_id>` | Consultar um usuário |
-| PUT | `/users/<int:user_id>` | Atualizar as preferências de um usuário |
-| DELETE | `/user/<int:user_id>` | Excluir um usuário |
-| GET | `/user_main_dashboard` | Obter recomendações personalizadas |
+| POST | `/register` | Cadastro de usuários |
+| POST | `/login` | Autenticação |
+| GET | `/user_main_dashboard` | Consulta de recomendações |
 
-**Observação:** endpoints protegidos exigem um token JWT válido.
+A comunicação com endpoints protegidos utiliza tokens JWT obtidos durante a autenticação.
 
-A documentação interativa completa está disponível no Swagger.
+O backend deve estar em execução para que as funcionalidades dependentes da API funcionem corretamente.
 
 ## 🚀 Executando com Docker
 
 ### Pré-requisitos
 
 - Docker Desktop instalado.
-- PostgreSQL instalado, configurado e em execução.
-- Banco de dados `wavematch` criado.
+- Backend do WaveMatch configurado e em execução.
 
 ### 1. Clone o repositório
 
 ```bash
-git clone URL_DO_REPOSITORIO_BACKEND
+git clone URL_DO_REPOSITORIO_FRONTEND
 cd NOME_DO_REPOSITORIO
 ```
 
 Substitua os valores pelos dados do seu repositório.
 
-### 2. Configure as variáveis de ambiente
+### 2. Construa a imagem Docker
 
-Crie um arquivo `.env` na raiz do projeto:
-
-```dotenv
-DATABASE_URL=postgresql+psycopg://USUARIO:SENHA@host.docker.internal:5432/wavematch
-JWT_SECRET_KEY=SUA_CHAVE_SECRETA
-```
-
-Substitua os valores de exemplo pelas suas configurações.
-
-**Importante:**
-
-- Não publique o arquivo `.env` no GitHub.
-- O endereço `host.docker.internal` permite que o container acesse o PostgreSQL instalado no computador.
-- Se o banco estiver em outro ambiente, ajuste a variável `DATABASE_URL`.
-
-### 3. Construa a imagem Docker
-
-No terminal, dentro da pasta do backend:
+No terminal, dentro da pasta do frontend:
 
 ```bash
-docker build -t wavematch-backend .
+docker build -t wavematch-frontend .
 ```
 
-### 4. Execute o container
+### 3. Execute o container
 
 ```bash
-docker run --name wavematch-api -p 5000:5000 --env-file .env wavematch-backend
+docker run --name wavematch-web -p 8080:80 wavematch-frontend
 ```
 
-A aplicação estará disponível em:
-
-http://localhost:5000
-
-### 5. Acesse o Swagger
+### 4. Acesse a aplicação
 
 Abra o navegador:
 
-http://localhost:5000/apidocs/
+http://localhost:8080
 
-O Swagger permite visualizar a documentação e testar os endpoints da API.
+O frontend será disponibilizado pelo Nginx.
 
-## 🔐 Autenticação
+## ⚙️ Configuração do backend
 
-O WaveMatch utiliza autenticação baseada em **JSON Web Tokens (JWT)**.
+Durante a execução local, o backend deve estar disponível em:
 
-Após realizar o login, o usuário recebe um token de acesso, utilizado para autenticar as requisições aos endpoints protegidos.
+http://localhost:5000
 
-Exemplo de cabeçalho HTTP:
+O JavaScript do frontend deve utilizar o endereço correto da API para enviar suas requisições.
 
-```http
-Authorization: Bearer SEU_TOKEN_JWT
+**Importante:** o frontend e o backend são executados em containers independentes.
+
+O backend deve permitir as requisições provenientes do frontend por meio da configuração adequada de CORS.
+
+## 🐳 Docker
+
+O projeto utiliza uma imagem baseada no Nginx para disponibilizar os arquivos estáticos da aplicação.
+
+Exemplo do Dockerfile:
+
+```dockerfile
+FROM nginx:alpine
+
+COPY . /usr/share/nginx/html
+
+EXPOSE 80
 ```
 
-## 🌊 Recomendações de surf
-
-O sistema utiliza as preferências cadastradas pelo usuário, incluindo:
-
-- Nível de experiência no surf.
-- Altura mínima de onda desejada.
-- Altura máxima de onda desejada.
-
-Quando as alturas não são informadas, a aplicação utiliza valores padrão definidos de acordo com o nível do surfista.
-
-O backend consulta os dados externos e processa as condições disponíveis para gerar recomendações personalizadas.
+O Nginx disponibiliza os arquivos HTML, CSS e JavaScript pela porta 80 do container, mapeada para a porta 8080 do computador.
 
 ## 📚 Contexto acadêmico
 
 O WaveMatch foi desenvolvido como projeto acadêmico, com o objetivo de aplicar conhecimentos relacionados a:
 
-- Desenvolvimento de APIs REST.
-- Integração entre sistemas.
-- Consumo de APIs externas.
-- Persistência de dados.
+- Desenvolvimento de interfaces web.
+- Integração entre frontend e backend.
+- Comunicação com APIs REST.
+- Manipulação de dados com JavaScript.
 - Autenticação de usuários.
-- Conteinerização com Docker.
+- Conteinerização de aplicações.
