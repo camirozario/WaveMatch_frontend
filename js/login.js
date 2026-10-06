@@ -13,7 +13,7 @@ loginForm.addEventListener("submit", async function(event){
 
     console.log(loginData);
 
-    const response = await fetch("http://127.0.0.1:5000/login",{ // para ONDE estamos enviando -> Nesta função, espere essa requisição produzir uma resposta antes de continuar para a próxima linha - response representa minha resposta
+    const response = await fetch("http://localhost:5000/login",{ // para ONDE estamos enviando -> Nesta função, espere essa requisição produzir uma resposta antes de continuar para a próxima linha - response representa minha resposta
         method:"POST", //qual método HTTP usar
 
         headers:{

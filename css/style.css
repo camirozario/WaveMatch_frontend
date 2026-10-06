@@ -363,11 +363,11 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
     }
 }
 #recommendations > h2,
-#recommendations > p {
-  margin: 0;
-  background: var(--color-surface);
-  border-inline: var(--border);
-  box-shadow: 4px 4px 0 var(--color-ink);
+#recommendations > .period-card {
+    margin: 0;
+    background: var(--color-surface);
+    border-inline: var(--border);
+    box-shadow: 4px 4px 0 var(--color-ink);
 }
 
 #recommendations > h2 {
@@ -390,7 +390,7 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
   background: url("../assets/img/wavematch-mark-orange.png") center / contain no-repeat;
 }
 
-#recommendations > p {
+#recommendations >  .period-card  {
   position: relative;
   padding: 13px var(--space-6) 13px calc(var(--space-6) + 22px);
   color: var(--color-ink);
@@ -398,29 +398,19 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
-#recommendations > p::before {
-  content: "";
-  position: absolute;
-  left: var(--space-6);
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  margin-top: -5px;
-  border: 1.5px solid var(--color-ink);
-  border-radius: 50%;
-  background: var(--color-lavender);
-}
-#recommendations > p + p { border-top: 1px dashed #dedfd3; }
 
 /* Primeiro período de cada praia = melhor opção */
-#recommendations > h2 + p { font-weight: 700; }
-#recommendations > h2 + p::before { background: var(--color-orange); }
+#recommendations > h2 + .period-card { font-weight: 700; }
 
 /* Último período de cada praia fecha o cartão */
-#recommendations > p:has(+ h2),
-#recommendations > p:last-child {
-  border-bottom: var(--border);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
+#recommendations > .period-card:has(+ h2),
+#recommendations > .period-card:last-child {
+    border-bottom: var(--border);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+#recommendations > .period-card + .period-card {
+    border-top: 1px dashed #dedfd3;
 }
 
 /* Carregamento: enquanto o script não preenche os elementos */
@@ -442,6 +432,37 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
   background: var(--color-surface);
 }
 @keyframes pulse { to { opacity: .45; } }
+
+.period-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 13px var(--space-6);
+
+    color: var(--color-ink);
+    font-size: 15px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.period-details {
+    display: grid;
+    grid-template-columns:
+        24px 70px
+        24px 100px
+        24px 30px;
+
+    align-items: center;
+    column-gap: 6px;
+}
+
+.period-details img {
+    width: 24px;
+    height: 24px;
+}
+
 
 /* ---------- Perfil ---------- */
 .profile-card { margin-bottom: var(--space-8); }
