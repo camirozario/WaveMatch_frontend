@@ -622,13 +622,24 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
 
 .hourly-chart {
     display: none;
-    height: 280px;
-    padding: 20px 24px;
+    position: relative;
+    height: 440px;
+    padding: 18px 22px 14px;
     box-sizing: border-box;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgb(36 89 116 / .04), transparent 46%),
+        var(--color-surface);
+    border-bottom: 1px solid var(--color-line);
 }
 
 .hourly-chart.active {
     display: block;
+}
+
+.hourly-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
 /* ---------- Perfil ---------- */
 .profile-card { margin-bottom: var(--space-8); }
@@ -721,6 +732,7 @@ input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 
   #recommendations > h2 { padding: var(--space-4); }
   #recommendations > p { padding-left: calc(var(--space-4) + 22px); }
   #recommendations > p::before { left: var(--space-4); }
+  .hourly-chart { height: 410px; padding: 14px 8px 10px; }
   .form-actions .btn, .danger-zone .btn { width: 100%; }
 }
 
